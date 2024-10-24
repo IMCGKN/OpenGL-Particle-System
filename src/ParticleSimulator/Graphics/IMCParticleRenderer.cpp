@@ -32,7 +32,7 @@ void IMCParticleRenderer::OnUpdate(float dt, std::unique_ptr<IMCCamera>& camera,
 
 		m_Particles[i].lifeRemaining -= dt;
 		m_Particles[i].position += m_Particles[i].velocity * (float)dt;
-		if (m_Particles[i].position.x <= camera->position.x * camera->GetZoom())
+		if (m_Particles[i].position.x <= camera->position.x)
 		{
 			m_Particles[i].velocity.x *= -1.0f;
 		}
@@ -41,7 +41,7 @@ void IMCParticleRenderer::OnUpdate(float dt, std::unique_ptr<IMCCamera>& camera,
 			m_Particles[i].velocity.x *= -1.0f;
 			m_Particles[i].position.x = camera->position.x + window->GetWidth() * camera->GetZoom();
 		}
-		else if (m_Particles[i].position.y <= camera->position.y * camera->GetZoom())
+		else if (m_Particles[i].position.y <= camera->position.y)
 		{
 			m_Particles[i].velocity.y *= -1.0f;
 		}
